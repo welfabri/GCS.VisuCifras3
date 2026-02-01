@@ -1,11 +1,15 @@
 using GCS.VisuCifras3.Client.Pages;
 using GCS.VisuCifras3.Components;
+using GCS.VisuCifras3.Modelos.Classes.Dados.Repositorios;
+using GCS.VisuCifras3.Modelos.Interfaces.Dados;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddScoped<IRepositorioCifras, RepositorioCifras>();
 
 var app = builder.Build();
 

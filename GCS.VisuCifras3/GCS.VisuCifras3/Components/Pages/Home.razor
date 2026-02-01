@@ -1,7 +1,34 @@
 ﻿@page "/"
+@using GCS.VisuCifras3.Modelos.Interfaces.Dados
+
+@inject IRepositorioCifras _repositorioCifras;
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@if (_letrasIniciaisTitulos is not null)
+{
+    <ul>
+        @foreach (var letra in _letrasIniciaisTitulos)
+        {
+            <li>@letra</li>
+        }
+    </ul>
+}
+else
+{
+    <p><em>Não foi encontrada nenhuma cifra cadastrada...</em></p>
+}
+
+@code {
+
+    List<String>? _letrasIniciaisTitulos = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _letrasIniciaisTitulos = _repositorioCifras.ObterInicialLetraTitulo();
+    }
+}
