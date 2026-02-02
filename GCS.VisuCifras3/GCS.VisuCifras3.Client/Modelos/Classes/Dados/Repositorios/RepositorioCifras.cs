@@ -5,7 +5,7 @@ namespace GCS.VisuCifras3.Modelos.Classes.Dados.Repositorios
 {
     public class RepositorioCifras : IRepositorioCifras
     {
-        public List<string> ObterInicialLetraTitulo()
+        public List<string> ObterTodasIniciaisLetraTitulo()
         {
             var l = BDCifras.Cifras
                 .Select(cifra => cifra.Titulo.Substring(0, 1).ToUpper())

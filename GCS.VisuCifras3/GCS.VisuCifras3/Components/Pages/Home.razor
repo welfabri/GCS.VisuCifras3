@@ -3,25 +3,31 @@
 
 @inject IRepositorioCifras _repositorioCifras;
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Buscar Cifras por Artistas</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="px-5 d-flex flex-column">
+    <div class="bg-dark text-white text-center p-3">
 
-Welcome to your new app.
-
-@if (_letrasIniciaisTitulos is not null)
-{
-    <ul>
-        @foreach (var letra in _letrasIniciaisTitulos)
+        @if (_letrasIniciaisTitulos is not null)
         {
-            <li>@letra</li>
+            @foreach (var letra in _letrasIniciaisTitulos)
+            {
+
+                <NavLink class="m-1" href="@letra">
+                    @letra
+                </NavLink>
+            }
         }
-    </ul>
-}
-else
-{
-    <p><em>Não foi encontrada nenhuma cifra cadastrada...</em></p>
-}
+        else
+        {
+            <p><em>Não foi encontrada nenhuma cifra cadastrada...</em></p>
+        }
+    </div>
+</div>
+
+<div>
+    <ComponenteArtistasLetra></ComponenteArtistasLetra>
+</div>
 
 @code {
 
@@ -29,6 +35,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _letrasIniciaisTitulos = _repositorioCifras.ObterInicialLetraTitulo();
+        _letrasIniciaisTitulos = _repositorioCifras.ObterTodasIniciaisLetraTitulo();
     }
 }

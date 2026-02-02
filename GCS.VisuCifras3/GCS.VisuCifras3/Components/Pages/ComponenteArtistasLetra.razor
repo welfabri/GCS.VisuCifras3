@@ -1,0 +1,20 @@
+﻿<h3 class="text-primary text-center p-3">Artistas por Iniciais do Nome</h3>
+
+<div>
+    @foreach (var a in _artistas)
+    {
+        <NavLink href="@a">@a</NavLink>
+    }
+</div>
+
+@code {
+    private HashSet<string> _artistas = new();
+
+    [Parameter]
+    public string LetraInicial { get; set { BuscarArtistasPelaLetraInicial(); } }
+
+    private void BuscarArtistasPelaLetraInicial()
+    {
+
+    }
+}
